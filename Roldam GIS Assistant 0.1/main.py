@@ -2,8 +2,9 @@ import csv
 import f_d_mgmt as mgmt
 from pathlib import Path
 
-curr_dir = Path("e:\Hobby\Roldam GIS Helper\RolDam\Klienci\Markefka")
-working_dir = Path('e:\Hobby\Roldam GIS Helper\RolDam\Klienci\Markefka')
+# Input the file pointers - folders which you want the program to work in
+curr_dir = mgmt.select_dir()
+working_dir = mgmt.select_dir()
 
 
 def main():

@@ -3,11 +3,16 @@ import os
 import shutil
 from datetime import date
 from pathlib import Path, PurePath
+from tkinter import filedialog
+from tkinter import *
 
 curr_date = date.today()
 
 # Path to the working directory
-
+def select_dir():
+    root = Tk()
+    root.filename =  filedialog.askopenfilename(initialdir = "/",title = "Select file",filetypes = ("all files","*.*"))
+    return root.filename
 
 # Function moves files with certain file extension to given folder
 def move_files_w_exts(csv_path, working_dir):

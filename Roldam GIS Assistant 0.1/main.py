@@ -3,8 +3,8 @@ import f_d_mgmt as mgmt
 from pathlib import Path
 
 # Input the file pointers - folders which you want the program to work in
-curr_dir = mgmt.select_dir()
-working_dir = mgmt.select_dir()
+curr_dir = mgmt.select_dir() # In this folder, the list of extensions is going to be saved
+working_dir = mgmt.select_dir() # The folder which is the subject to sorting
 
 
 def main():

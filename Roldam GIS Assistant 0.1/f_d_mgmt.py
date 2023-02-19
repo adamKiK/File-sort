@@ -11,7 +11,7 @@ curr_date = date.today()
 # Path to the working directory
 def select_dir():
     root = Tk()
-    root.filename =  filedialog.askopenfilename(initialdir = "/",title = "Select file",filetypes = ("all files","*.*"))
+    root.filename =  filedialog.askdirectory(title = "Select working directory")
     return root.filename
 
 # Function moves files with certain file extension to given folder

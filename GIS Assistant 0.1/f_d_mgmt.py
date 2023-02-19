@@ -50,12 +50,27 @@ def move_files_w_exts(csv_path, working_dir):
                 copy_dest_path = destination_path / f.name
 
                 if not Path(copy_dest_path).exists():
-                    shutil.copy(f, copy_dest_path)
+                    shutil.copy2(f, copy_dest_path) # Copies files & tries to save metadata
 
-                    new_filename = f.stem + " " + dir_path.stem + f.suffix
+                    new_filename = f.stem + " " + dir_path.stem
                     target_file_path = destination_path / new_filename
 
-                    os.rename(copy_dest_path, target_file_path)
+                    copied = False
+                    no_tries = 1
+                    
+                    # Taking in account possible existing file after renaming with 'os.rename'
+                    # Try changing name with an added number at end
+                    while copied == False:
+                        
+                        final_file_path = Path(target_file_path, f.suffix)
+                        
+                        # 'os.is_file' returns 1 if file exists
+                        if final_file_path.exists():
+                            target_file_path += '_' + no_tries ### !!! Can append new floors and always a 1 at the end !!! - need fix
+                            no_tries += 1
+                        else:
+                            os.rename(copy_dest_path, final_file_path) 
+                            copied = True
                     # os.remove(destination_path / f.name)
 
 
